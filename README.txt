@@ -1,0 +1,1 @@
+Creating a project with HTML, CSS and JavaScript to manipulate de DOM.
