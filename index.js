@@ -2,6 +2,12 @@ let slider = document.getElementById('pixels');
 let sliderNum = document.getElementById('pixelsValue');
 let mousePressed = false;
 let clearButton = document.getElementById('clear');
+let sketchBackColorButton = document.getElementById('sketchBackColor');
+
+sketchBackColorButton.onchange = function(){
+    const drawing = document.querySelector('.drawing');
+    drawing.style.background = this.value;
+}
 
 clearButton.onclick = clear;
 
