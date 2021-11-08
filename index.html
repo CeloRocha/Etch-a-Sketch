@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.js">
+    <link rel="stylesheet" href="index.css">
     <title>Etch-a-Sketch</title>
 </head>
 <body>
-    
-
+    <div class="back"></div>
+    <main class="container">
+        <h1 class="title">Draw Your Sketch!</h1>
+        <section class="content">
+            <div class="options">
+                <input type="color" name="" id="pincel">
+                <button>B2</button>
+                <button>B3</button>
+                <button>B4</button>
+                <div class="slider">
+                    <h2 id="pixelsValue">16</h2>
+                    <input type="range" min="1" max="64" value="16" id='pixels'>
+                </div>
+                <button>Clear</button>
+            </div>
+            <div class="drawing"></div>
+        </section>
+    </main>
     <script src="index.js"></script>
 </body>
 </html>
