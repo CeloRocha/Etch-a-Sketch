@@ -1,6 +1,9 @@
 let slider = document.getElementById('pixels');
 let sliderNum = document.getElementById('pixelsValue');
 let mousePressed = false;
+let clearButton = document.getElementById('clear');
+
+clearButton.onclick = clear;
 
 slider.oninput = function(){
     sliderNum.innerHTML = this.value;
@@ -40,6 +43,13 @@ function changeColor(){
     if(mousePressed){
         this.style.background = document.getElementById('pincel').value;
     }
+}
+
+function clear(){
+    const pixel = document.querySelectorAll('.drawing > div');
+    pixel.forEach((elem)=>{
+        elem.style.background = 'transparent';
+    });
 }
 
 createSketch(16);
