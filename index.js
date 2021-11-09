@@ -10,6 +10,7 @@ const shadeButton = document.getElementById('Shade');
 const enlightButton = document.getElementById('Enlight');
 const normalButton = document.getElementById('Normal');
 const randomButton = document.getElementById('Random');
+const eraserButton = document.getElementById('Eraser');
 let penState = 0;
 
 //Pen states, for pixel function: changeColor()
@@ -17,6 +18,7 @@ normalButton.onclick = ()=>{penState = 0; buttonClassState();}
 shadeButton.onclick = ()=>{penState = 2; buttonClassState();}
 enlightButton.onclick = ()=>{penState = 1; buttonClassState();}
 randomButton.onclick = ()=>{penState = 3; buttonClassState();}
+eraserButton.onclick = ()=>{penState = 4; buttonClassState();}
 
 gridButton.onclick = function(){
     if(gridState){
@@ -30,10 +32,8 @@ gridButton.onclick = function(){
 }
 
 sketchBackColorButton.onchange = function(){
-    const pixel = document.querySelectorAll('.drawing > div');
-    pixel.forEach((elem)=>{
-        elem.style['background-color'] = document.getElementById('sketchBackColor').value;
-    });
+    const drawing = document.querySelector('.drawing');
+    drawing.style.background = this.value;
 }
 
 clearButton.onclick = clear;
@@ -65,7 +65,7 @@ function createSketch(size){
 //Create a single pixel and assign it to the DOM drawing.
 function createPixel(drawing){
     let pixel = document.createElement('div');
-    pixel.style['background-color'] = document.getElementById('sketchBackColor').value;
+    pixel.style['background-color'] = 'transparent';
     pixel.addEventListener('mousemove', changeColor);
     drawing.appendChild(pixel);
 }
@@ -104,6 +104,10 @@ function changeColor(){
             case 3:
                 this.style['background-color'] = randomColor();
                 break;
+            case 4:
+                this.style['background-color'] = 'transparent';
+                console.log('fucl')
+                break;
         }
     }
 }
@@ -134,6 +138,7 @@ function buttonClassState(){
     shadeButton.classList.remove('active');
     enlightButton.classList.remove('active');
     randomButton.classList.remove('active');
+    eraserButton.classList.remove('active');
     switch(penState){
         case 0:
             normalButton.classList.add('active');
@@ -147,13 +152,16 @@ function buttonClassState(){
         case 3:
             randomButton.classList.add('active');
             break;
+        case 4:
+            eraserButton.classList.add('active');
+            break;
     }
 }
 
 function clear(){
     const pixel = document.querySelectorAll('.drawing > div');
     pixel.forEach((elem)=>{
-        elem.style['background-color'] = document.getElementById('sketchBackColor').value;
+        elem.style['background-color'] = 'transparent';
     });
 }
 
