@@ -92,34 +92,35 @@ function changeColor(e){
                 if(this.style['background-color']==='transparent'){
                     this.style['background-color'] = sketchBackColorButton.value;
                 }
-                rgbColor = this.style['background-color'].slice(4,-1).split(', ');
-                newRgbColor = rgbColor.map((elem)=>{
-                    return Number(11*elem/10)+10;
-                });
-                colorString = 'rgb('+newRgbColor.join(', ')+')';
-                this.style['background-color'] = colorString;
+                this.style['background-color'] = proxColor(this.style['background-color'], 1.1, 10);
                 break;
             case 2:
                 if(this.style['background-color']==='transparent'){
                     this.style['background-color'] = sketchBackColorButton.value;
                 }
-                rgbColor = this.style['background-color'].slice(4,-1).split(', ');
-                newRgbColor = rgbColor.map((elem)=>{
-                    return Number(9*elem/10);
-                });
-                colorString = 'rgb('+newRgbColor.join(', ')+')';
-                this.style['background-color'] = colorString;
+                this.style['background-color'] = proxColor(this.style['background-color'], 0.9, -10);
                 break;
             case 3:
                 this.style['background-color'] = randomColor();
                 break;
             case 4:
                 this.style['background-color'] = 'transparent';
-                console.log('fucl')
                 break;
         }
     }
 }
+
+//Receive a color, multiply it to shade or enlight, and receive an add parameter,
+//because black can't be multiplied.
+function proxColor(color, multiplier, add = 0){
+    const rgbColor = color.slice(4,-1).split(', ');
+    const newRgbColor = rgbColor.map((elem)=>{
+        return Number(elem*multiplier)+add;
+    });
+    const colorString = 'rgb('+newRgbColor.join(', ')+')';
+    return colorString;
+}
+
 
 function randomColor(){
     let color = '#';
