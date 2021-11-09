@@ -26,12 +26,12 @@
     background: repeating-linear-gradient(-45deg, 
     transparent 0px, transparent 80px,
     var(--secondaryColor) 80px, var(--secondaryColor) 95px, transparent 95px);
-    animation: backMovement 4s linear infinite;
+    animation: backMovement 5s linear infinite;
 }
 
 @keyframes backMovement {
     100%{
-        transform: translateX(-5.7%);
+        transform: translateX(-137px);
     }
 }
 
