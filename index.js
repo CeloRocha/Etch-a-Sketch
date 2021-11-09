@@ -159,5 +159,6 @@ function clear(){
 }
 
 document.getElementById('sketchBackColor').value = '#FFFFFF';
+slider.value = '16';
 createSketch(16);
 document.getElementById('pincel').value = '#000000'
