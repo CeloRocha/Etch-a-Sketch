@@ -114,6 +114,10 @@ button:hover{
     display: grid;
 }
 
+#clearCellphone{
+    display: none;
+}
+
 @media (max-width: 640px){
     .back{
         height: 0px;
@@ -136,5 +140,12 @@ button:hover{
     .drawing{
         height: 360px;
         width: 360px;
+    }
+
+    #clear{
+        display: none;
+    }
+    #clearCellphone{
+        display: inline-block;
     }
 }

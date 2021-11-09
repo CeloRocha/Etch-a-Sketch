@@ -11,6 +11,7 @@ const normalButton = document.getElementById('Normal');
 const randomButton = document.getElementById('Random');
 const eraserButton = document.getElementById('Eraser');
 const clearButton = document.getElementById('clear');
+const clearCellphoneButton = document.getElementById('clearCellphone');
 
 //Var
 let penState = 0; //Normal pen active in beginning.
@@ -46,6 +47,7 @@ sketchBackColorButton.onchange = function(){
 
 //Add event on clearButton.
 clearButton.onclick = clear;
+clearCellphoneButton.onclick = clear;
 
 //Update slider number show while drag.
 //But just recreate the grid, when finish.
