@@ -86,6 +86,9 @@ function changeColor(){
                 this.style['background-color'] = document.getElementById('pincel').value;
                 break;
             case 1:
+                if(this.style['background-color']==='transparent'){
+                    this.style['background-color'] = sketchBackColorButton.value;
+                }
                 rgbColor = this.style['background-color'].slice(4,-1).split(', ');
                 newRgbColor = rgbColor.map((elem)=>{
                     return Number(11*elem/10)+10;
@@ -94,6 +97,9 @@ function changeColor(){
                 this.style['background-color'] = colorString;
                 break;
             case 2:
+                if(this.style['background-color']==='transparent'){
+                    this.style['background-color'] = sketchBackColorButton.value;
+                }
                 rgbColor = this.style['background-color'].slice(4,-1).split(', ');
                 newRgbColor = rgbColor.map((elem)=>{
                     return Number(9*elem/10);
