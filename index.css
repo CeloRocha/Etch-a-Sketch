@@ -15,17 +15,24 @@
     background: repeating-linear-gradient(45deg, 
         var(--color) 0px, var(--color) 80px,
         var(--secondaryColor) 80px, var(--secondaryColor) 95px, var(--color) 95px);
-    
+    overflow-x: hidden;
 }
 
 .back::before{
     content: '';
     position: absolute;
-    width: 100%;
+    width: 150%;
     height: 100%;
     background: repeating-linear-gradient(-45deg, 
     transparent 0px, transparent 80px,
     var(--secondaryColor) 80px, var(--secondaryColor) 95px, transparent 95px);
+    animation: backMovement 4s linear infinite;
+}
+
+@keyframes backMovement {
+    100%{
+        transform: translateX(-5.7%);
+    }
 }
 
 .container{
