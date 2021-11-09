@@ -1,25 +1,32 @@
 const slider = document.getElementById('pixels');
 const sliderNum = document.getElementById('pixelsValue');
-const mouseDetected = document.querySelector('body');
-let mousePressed = false;
-const clearButton = document.getElementById('clear');
+
 const sketchBackColorButton = document.getElementById('sketchBackColor');
+
+//Buttons in Options div.
 const gridButton = document.getElementById('gridButton');
-let gridState = true;
 const shadeButton = document.getElementById('Shade');
 const enlightButton = document.getElementById('Enlight');
 const normalButton = document.getElementById('Normal');
 const randomButton = document.getElementById('Random');
 const eraserButton = document.getElementById('Eraser');
-let penState = 0;
+const clearButton = document.getElementById('clear');
+
+//Var
+let penState = 0; //Normal pen active in beginning.
+let gridState = true; //Initialize with grid active.
 
 //Pen states, for pixel function: changeColor()
+//Buttons update penState, to use in changeColor()
+//And penState is used for buttonState set the active button.
 normalButton.onclick = ()=>{penState = 0; buttonClassState();}
 shadeButton.onclick = ()=>{penState = 2; buttonClassState();}
 enlightButton.onclick = ()=>{penState = 1; buttonClassState();}
 randomButton.onclick = ()=>{penState = 3; buttonClassState();}
 eraserButton.onclick = ()=>{penState = 4; buttonClassState();}
 
+//Update the state of the grid button.
+//Update gridState and call respective function.
 gridButton.onclick = function(){
     if(gridState){
         gridState = false;
@@ -31,13 +38,17 @@ gridButton.onclick = function(){
     gridStateFunc();
 }
 
+//Change background color.
 sketchBackColorButton.onchange = function(){
     const drawing = document.querySelector('.drawing');
     drawing.style.background = this.value;
 }
 
+//Add event on clearButton.
 clearButton.onclick = clear;
 
+//Update slider number show while drag.
+//But just recreate the grid, when finish.
 slider.oninput = function(){
     sliderNum.innerHTML = this.value;
 };
@@ -57,7 +68,6 @@ function createSketch(size){
             createPixel(drawing);
         }
     }
-
     gridStateFunc();
 }
 
@@ -71,7 +81,7 @@ function createPixel(drawing){
     drawing.appendChild(pixel);
 }
 
-
+//Delete all divs in drawing sketch and create then with a new size.
 function recreateSketch(size){
     const drawing = document.querySelector('.drawing');
     drawing.innerHTML = '';
@@ -79,11 +89,8 @@ function recreateSketch(size){
 }
 
 
-function changeColor(e){
-    let rgbColor;
-    let newRgbColor;
-    let colorString;
-    if(e.buttons>0){
+function changeColor(mouse){
+    if(mouse.buttons>0){
         switch(penState){
             case 0:
                 this.style['background-color'] = document.getElementById('pincel').value;
@@ -112,6 +119,7 @@ function changeColor(e){
 
 //Receive a color, multiply it to shade or enlight, and receive an add parameter,
 //because black can't be multiplied.
+//Return the new color.
 function proxColor(color, multiplier, add = 0){
     const rgbColor = color.slice(4,-1).split(', ');
     const newRgbColor = rgbColor.map((elem)=>{
@@ -121,7 +129,7 @@ function proxColor(color, multiplier, add = 0){
     return colorString;
 }
 
-
+//Generate a random color, and return it.
 function randomColor(){
     let color = '#';
     const arrOptions = '0123456789ABCDEF';
@@ -130,6 +138,8 @@ function randomColor(){
     }
     return color;
 }
+
+//Edit the pixels, to enable or disable grid.
 function gridStateFunc(){
     const pixel = document.querySelectorAll('.drawing > div');
     if(gridState){
@@ -143,6 +153,7 @@ function gridStateFunc(){
     }  
 }
 
+//Show the correct pressed button, by adding '.active' class to it.
 function buttonClassState(){
     normalButton.classList.remove('active');
     shadeButton.classList.remove('active');
@@ -168,6 +179,8 @@ function buttonClassState(){
     }
 }
 
+
+//Clear all the pixels back to transparent.
 function clear(){
     const pixel = document.querySelectorAll('.drawing > div');
     pixel.forEach((elem)=>{
@@ -175,6 +188,8 @@ function clear(){
     });
 }
 
+
+//Initialize the page with correct parameters.
 document.getElementById('sketchBackColor').value = '#FFFFFF';
 slider.value = '16';
 createSketch(16);
