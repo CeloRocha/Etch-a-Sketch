@@ -51,8 +51,7 @@ slider.onmouseup = function(){
 function createSketch(size){
     const drawing = document.querySelector('.drawing');
     drawing.style.cssText = `grid-template-columns: repeat(${size}, calc(100%/${size}));`;
-    drawing.onmousedown = ()=>mousePressed = true;
-    drawing.onmouseup = ()=>mousePressed = false;
+    drawing.setAttribute('draggable', 'false');
     for(let i=0; i<size; i++){
         for(let j=0; j<size; j++){
             createPixel(drawing);
@@ -66,9 +65,12 @@ function createSketch(size){
 function createPixel(drawing){
     let pixel = document.createElement('div');
     pixel.style['background-color'] = 'transparent';
-    pixel.addEventListener('mousemove', changeColor);
+    pixel.setAttribute('draggable', 'false');
+    pixel.addEventListener('mouseenter', changeColor);
+    pixel.addEventListener('mousedown', changeColor);
     drawing.appendChild(pixel);
 }
+
 
 function recreateSketch(size){
     const drawing = document.querySelector('.drawing');
@@ -76,11 +78,12 @@ function recreateSketch(size){
     createSketch(size);
 }
 
-function changeColor(){
+
+function changeColor(e){
     let rgbColor;
     let newRgbColor;
     let colorString;
-    if(mousePressed){
+    if(e.buttons>0){
         switch(penState){
             case 0:
                 this.style['background-color'] = document.getElementById('pincel').value;
