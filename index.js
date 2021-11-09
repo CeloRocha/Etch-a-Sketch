@@ -9,15 +9,14 @@ let gridState = true;
 const shadeButton = document.getElementById('Shade');
 const enlightButton = document.getElementById('Enlight');
 const normalButton = document.getElementById('Normal');
+const randomButton = document.getElementById('Random');
 let penState = 0;
 
+//Pen states, for pixel function: changeColor()
 normalButton.onclick = ()=>{penState = 0;}
-shadeButton.onclick = function(){
-    penState = 2;
-}
-enlightButton.onclick = function(){
-    penState = 1;
-}
+shadeButton.onclick = ()=>{penState = 2;}
+enlightButton.onclick = ()=>{penState = 1;}
+randomButton.onclick = ()=>{penState = 3;}
 
 gridButton.onclick = function(){
     if(gridState){
@@ -101,10 +100,21 @@ function changeColor(){
                 colorString = 'rgb('+newRgbColor.join(', ')+')';
                 this.style['background-color'] = colorString;
                 break;
+            case 3:
+                this.style['background-color'] = randomColor();
+                break;
         }
     }
 }
 
+function randomColor(){
+    let color = '#';
+    const arrOptions = '0123456789ABCDEF';
+    for(let i = 0; i<6; i++){
+        color += arrOptions[Math.floor(Math.random()*16)];
+    }
+    return color;
+}
 function gridStateFunc(){
     const pixel = document.querySelectorAll('.drawing > div');
     if(gridState){
