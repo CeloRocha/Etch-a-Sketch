@@ -56,6 +56,7 @@ slider.onmouseup = function(){
     recreateSketch(this.value);
 };
 
+
 //FUNCTIONS:
 
 //Creates a matrix with size X size, pixels for drawing.
@@ -182,10 +183,7 @@ function buttonClassState(){
 
 //Clear all the pixels back to transparent.
 function clear(){
-    const pixel = document.querySelectorAll('.drawing > div');
-    pixel.forEach((elem)=>{
-        elem.style['background-color'] = 'transparent';
-    });
+    recreateSketch(slider.value);
 }
 
 
