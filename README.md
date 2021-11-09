@@ -7,8 +7,8 @@ Creating a project with HTML, CSS and JavaScript to manipulate de DOM.
  - Animated background in big screens!
  - Have some fun!
 
+ ![Fire in the dark](./image/fire.png)
  ![Beautifull Mushroom](./image/sketchImage.png)
- ![Other Beautifull Mushroom](./image/sketchImageNoGrid.png)
 
  ## Learnings
 
@@ -17,3 +17,6 @@ Creating a project with HTML, CSS and JavaScript to manipulate de DOM.
   - Change, read and create DOM elements with JavaScript;
   - Use @media for cellphone and @keyframes for background;
   - Training program logic with some pen options;
+
+
+ ![Other Beautifull Mushroom](./image/sketchImageNoGrid.png)
