@@ -1,6 +1,6 @@
 Creating a project with HTML, CSS and JavaScript to manipulate de DOM.
 
-#Etch a Sketch
+# Etch a Sketch
 
  - Draw your pixeled image!
  - Cellphone support!
@@ -10,7 +10,7 @@ Creating a project with HTML, CSS and JavaScript to manipulate de DOM.
  ![Beautifull Mushroom](./image/sketchImage.png)
  ![Other Beautifull Mushroom](./image/sketchImageNoGrid.png)
 
- ##Learnings
+ ## Learnings
 
   - In this project, i have to learn a certain amount of events and selectors;
   - Pick a color and process it to shade it and enlight;
