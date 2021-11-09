@@ -13,16 +13,18 @@ const randomButton = document.getElementById('Random');
 let penState = 0;
 
 //Pen states, for pixel function: changeColor()
-normalButton.onclick = ()=>{penState = 0;}
-shadeButton.onclick = ()=>{penState = 2;}
-enlightButton.onclick = ()=>{penState = 1;}
-randomButton.onclick = ()=>{penState = 3;}
+normalButton.onclick = ()=>{penState = 0; buttonClassState();}
+shadeButton.onclick = ()=>{penState = 2; buttonClassState();}
+enlightButton.onclick = ()=>{penState = 1; buttonClassState();}
+randomButton.onclick = ()=>{penState = 3; buttonClassState();}
 
 gridButton.onclick = function(){
     if(gridState){
         gridState = false;
+        this.classList.remove('active');
     }else{
         gridState = true;
+        this.classList.add('active');
     }
     gridStateFunc();
 }
@@ -128,6 +130,27 @@ function gridStateFunc(){
     }  
 }
 
+function buttonClassState(){
+    normalButton.classList.remove('active');
+    shadeButton.classList.remove('active');
+    enlightButton.classList.remove('active');
+    randomButton.classList.remove('active');
+    switch(penState){
+        case 0:
+            normalButton.classList.add('active');
+            break;
+        case 1:
+            enlightButton.classList.add('active');
+            break;
+        case 2:
+            shadeButton.classList.add('active');
+            break;
+        case 3:
+            randomButton.classList.add('active');
+            break;
+    }
+}
+
 function clear(){
     const pixel = document.querySelectorAll('.drawing > div');
     pixel.forEach((elem)=>{
@@ -135,4 +158,6 @@ function clear(){
     });
 }
 
+document.getElementById('sketchBackColor').value = '#FFFFFF';
 createSketch(16);
+document.getElementById('pincel').value = '#000000'
