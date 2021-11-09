@@ -88,11 +88,10 @@ function changeColor(){
             case 1:
                 rgbColor = this.style['background-color'].slice(4,-1).split(', ');
                 newRgbColor = rgbColor.map((elem)=>{
-                    return Number(11*elem/10);
+                    return Number(11*elem/10)+10;
                 });
                 colorString = 'rgb('+newRgbColor.join(', ')+')';
                 this.style['background-color'] = colorString;
-                console.log('aaaa')
                 break;
             case 2:
                 rgbColor = this.style['background-color'].slice(4,-1).split(', ');
